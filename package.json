@@ -1,0 +1,36 @@
+{
+  "name": "conflux-examples",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-rxjs/core": "^0.10.4",
+    "history": "^5.3.0",
+    "immutable-lens": "^0.4.2",
+    "lenrix": "^0.10.0-alpha.13",
+    "observable-tree-router": "^0.2.1",
+    "ramda": "^0.29.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-loader-spinner": "^5.3.4",
+    "react-select": "^5.7.2",
+    "redux": "^4.2.1",
+    "rxjs": "^7.8.0",
+    "sequency": "^0.20.0"
+  },
+  "devDependencies": {
+    "@types/ramda": "^0.28.23",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0",
+    "vitest": "^0.29.3"
+  }
+}
