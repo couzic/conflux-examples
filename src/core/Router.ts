@@ -12,25 +12,24 @@ export const createRouter = (history: History) =>
           nested: {
             a: route({ path: "/a" }),
             b: route({ path: "/b" }),
-            c: route({ path: "/c/:pokemon-name", params: ["pokemon-name"] }),
           },
         }),
         "2": route({
-          path: "/2/:pokemon-name",
-          params: ["pokemon-name"],
-        }),
-        "3": route({ path: "/3" }),
-        "4": route({
-          path: "/4",
+          path: "/2",
           nested: {
-            a: route({ path: "/a" }),
+            a: route({ path: "/a/:pokemon-name", params: ["pokemon-name"] }),
             b: route({ path: "/b/:pokemon-name", params: ["pokemon-name"] }),
           },
         }),
+        "3": route({
+          path: "/3",
+          nested: {
+            a: route({ path: "/a" }),
+            b: route({ path: "/b" }),
+            c: route({ path: "/c/:pokemon-name", params: ["pokemon-name"] }),
+          },
+        }),
       },
-    }),
-    productSearch: route({
-      path: "/product-search",
     }),
   });
 

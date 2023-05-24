@@ -4,12 +4,14 @@ import { distinctUntilChanged, filter, first, map, mergeMap } from "rxjs";
 import { asSequence } from "sequency";
 import { Route } from "../../common/Route";
 import { loadableComponent } from "../../common/loadableComponent";
-import { core } from "../../core";
+import { router } from "../../router";
 import { PokemonName, PokemonUrl } from "./pokemon/Pokemon";
 import { PokemonDisplay } from "./pokemon/PokemonDisplay";
 import { createPokemonService } from "./pokemon/PokemonService";
+import { ExampleDescription } from "./ExampleDescription";
+import { ExampleLink } from "./ExampleLink";
 
-const route = core.router.examples["4"].b;
+const route = router.examples["3"].c;
 
 const pokemonService = createPokemonService();
 
@@ -30,8 +32,7 @@ const store = createStore({})
     ),
     selectedPokemonName: route.match$.pipe(
       filter(Boolean),
-      map((match) => match.params["pokemon-name"] as PokemonName),
-      distinctUntilChanged()
+      map((match) => match.params["pokemon-name"] as PokemonName)
     ),
   })
   .actionTypes<{ selectPokemon: PokemonOption | null }>()
@@ -73,9 +74,25 @@ const PokemonSelection = loadableComponent(
   )
 );
 
-export const Example04b = () => (
+export const Example03c = () => (
   <Route match={route}>
-    <h2>Example 4b</h2>
-    <PokemonSelection />
+    <h2>Example 3c</h2>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <Description />
+      <PokemonSelection />
+    </div>
   </Route>
+);
+
+const Description = () => (
+  <ExampleDescription>
+    <p>
+      Again we build from the previous example. This time, we add the selected
+      pokemon name as an URL param.
+    </p>
+    <p>Have fun playing with the browser Back and Forward buttons !</p>
+    <ExampleLink filename="Example03b.tsx" />
+  </ExampleDescription>
 );

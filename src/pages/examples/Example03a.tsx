@@ -1,14 +1,16 @@
 import { createStore } from "lenrix";
 import { of } from "rxjs";
 import { Route } from "../../common/Route";
-import { core } from "../../core";
+import { router } from "../../router";
 import { PokemonDisplay } from "./pokemon/PokemonDisplay";
 import { createPokemonService } from "./pokemon/PokemonService";
 import { PokemonId, PokemonName } from "./pokemon/Pokemon";
 import Select from "react-select";
 import { loadableComponent } from "../../common/loadableComponent";
+import { ExampleDescription } from "./ExampleDescription";
+import { ExampleLink } from "./ExampleLink";
 
-const route = core.router.examples["3"];
+const route = router.examples["3"].a;
 
 const pokemonService = createPokemonService();
 
@@ -136,10 +138,26 @@ const PokemonSelect = loadableComponent(
 const Pokemon = loadableComponent(store.pick("pokemon"), ({ pokemon }) =>
   !pokemon ? null : <PokemonDisplay pokemon={pokemon} />
 );
-export const Example03 = () => (
+
+export const Example03a = () => (
   <Route match={route}>
-    <h2>Example 3</h2>
-    <PokemonSelect />
-    <Pokemon />
+    <h2>Example 3a</h2>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <Description />
+      <PokemonSelect />
+      <Pokemon />
+    </div>
   </Route>
+);
+
+const Description = () => (
+  <ExampleDescription>
+    <p>
+      We start from a select with a static list of options. Once an option is
+      selected, the data for the selected pokemon is loaded.
+    </p>
+    <ExampleLink filename="Example03a.tsx" />
+  </ExampleDescription>
 );

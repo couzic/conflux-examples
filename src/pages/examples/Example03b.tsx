@@ -1,16 +1,16 @@
 import { createStore } from "lenrix";
 import Select from "react-select";
-import { filter, first, map, mergeMap, of, switchMap } from "rxjs";
+import { filter, first, map, mergeMap, of } from "rxjs";
 import { Route } from "../../common/Route";
-import { Spinner } from "../../common/Spinner";
 import { loadableComponent } from "../../common/loadableComponent";
-import { reactiveComponent } from "../../common/reactiveComponent";
-import { core } from "../../core";
+import { router } from "../../router";
 import { PokemonName, PokemonUrl } from "./pokemon/Pokemon";
 import { PokemonDisplay } from "./pokemon/PokemonDisplay";
 import { createPokemonService } from "./pokemon/PokemonService";
+import { ExampleDescription } from "./ExampleDescription";
+import { ExampleLink } from "./ExampleLink";
 
-const route = core.router.examples["4"].a;
+const route = router.examples["3"].b;
 
 const pokemonService = createPokemonService();
 
@@ -66,10 +66,25 @@ const Pokemon = loadableComponent(store.pick("pokemon"), ({ pokemon }) =>
   !pokemon ? null : <PokemonDisplay pokemon={pokemon} />
 );
 
-export const Example04a = () => (
+export const Example03b = () => (
   <Route match={route}>
-    <h2>Example 4a</h2>
-    <PokemonSelect />
-    <Pokemon />
+    <h2>Example 3b</h2>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <Description />
+      <PokemonSelect />
+      <Pokemon />
+    </div>
   </Route>
+);
+
+const Description = () => (
+  <ExampleDescription>
+    <p>
+      Much like the previous example, the only difference is that the select
+      options are loaded from the API.
+    </p>
+    <ExampleLink filename="Example03b.tsx" />
+  </ExampleDescription>
 );
