@@ -2,7 +2,6 @@ import { createStore } from "lenrix";
 import { distinctUntilChanged, filter, map } from "rxjs";
 import { Route } from "../../common/Route";
 import { loadableComponent } from "../../common/loadableComponent";
-import { router } from "../../router";
 import {
   ExampleDescription,
   descriptionButtonStyle,
@@ -10,6 +9,7 @@ import {
 import { ExampleLink } from "./ExampleLink";
 import { PokemonDisplay } from "./pokemon/PokemonDisplay";
 import { createPokemonService } from "./pokemon/PokemonService";
+import { router } from "../../router/Router";
 
 const route = router.examples["2"].a;
 

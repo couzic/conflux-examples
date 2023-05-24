@@ -1,15 +1,15 @@
 import { createStore } from "lenrix";
 import Select from "react-select";
-import { distinctUntilChanged, filter, first, map, mergeMap } from "rxjs";
+import { filter, first, map, mergeMap } from "rxjs";
 import { asSequence } from "sequency";
 import { Route } from "../../common/Route";
 import { loadableComponent } from "../../common/loadableComponent";
-import { router } from "../../router";
+import { router } from "../../router/Router";
+import { ExampleDescription } from "./ExampleDescription";
+import { ExampleLink } from "./ExampleLink";
 import { PokemonName, PokemonUrl } from "./pokemon/Pokemon";
 import { PokemonDisplay } from "./pokemon/PokemonDisplay";
 import { createPokemonService } from "./pokemon/PokemonService";
-import { ExampleDescription } from "./ExampleDescription";
-import { ExampleLink } from "./ExampleLink";
 
 const route = router.examples["3"].c;
 

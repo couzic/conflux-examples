@@ -1,5 +1,5 @@
 import { Route } from "../../common/Route";
-import { router } from "../../router";
+import { router } from "../../router/Router";
 import { Example01a } from "./Example01a";
 import { Example01b } from "./Example01b";
 import { Example02a } from "./Example02a";

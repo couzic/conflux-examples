@@ -1,7 +1,6 @@
 import { createStore } from "lenrix";
 import { of } from "rxjs";
 import { Route } from "../../common/Route";
-import { router } from "../../router";
 import { PokemonDisplay } from "./pokemon/PokemonDisplay";
 import { createPokemonService } from "./pokemon/PokemonService";
 import { PokemonId, PokemonName } from "./pokemon/Pokemon";
@@ -9,6 +8,7 @@ import Select from "react-select";
 import { loadableComponent } from "../../common/loadableComponent";
 import { ExampleDescription } from "./ExampleDescription";
 import { ExampleLink } from "./ExampleLink";
+import { router } from "../../router/Router";
 
 const route = router.examples["3"].a;
 

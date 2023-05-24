@@ -2,11 +2,11 @@ import { createStore } from "lenrix";
 import { filter, first, mergeMap } from "rxjs";
 import { Route } from "../../common/Route";
 import { loadableComponent } from "../../common/loadableComponent";
-import { router } from "../../router";
 import { ExampleDescription } from "./ExampleDescription";
 import { ExampleLink } from "./ExampleLink";
 import { PokemonDisplay } from "./pokemon/PokemonDisplay";
 import { createPokemonService } from "./pokemon/PokemonService";
+import { router } from "../../router/Router";
 
 const route = router.examples["1"].a;
 

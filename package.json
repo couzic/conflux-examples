@@ -7,10 +7,12 @@
     "dev": "vite",
     "test": "vitest",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && firebase deploy"
   },
   "dependencies": {
     "@react-rxjs/core": "^0.10.4",
+    "firebase": "^9.22.0",
     "history": "^5.3.0",
     "immutable-lens": "^0.4.2",
     "lenrix": "^0.10.0-alpha.13",

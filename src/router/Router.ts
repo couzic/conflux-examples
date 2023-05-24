@@ -1,4 +1,4 @@
-import { History } from "history";
+import { History, createBrowserHistory } from "history";
 import { createBrowserRouter, route } from "observable-tree-router";
 
 export const createRouter = (history: History) =>
@@ -34,3 +34,5 @@ export const createRouter = (history: History) =>
   });
 
 export type Router = ReturnType<typeof createRouter>;
+
+export const router = createRouter(createBrowserHistory());

@@ -3,12 +3,12 @@ import Select from "react-select";
 import { filter, first, map, mergeMap, of } from "rxjs";
 import { Route } from "../../common/Route";
 import { loadableComponent } from "../../common/loadableComponent";
-import { router } from "../../router";
 import { PokemonName, PokemonUrl } from "./pokemon/Pokemon";
 import { PokemonDisplay } from "./pokemon/PokemonDisplay";
 import { createPokemonService } from "./pokemon/PokemonService";
 import { ExampleDescription } from "./ExampleDescription";
 import { ExampleLink } from "./ExampleLink";
+import { router } from "../../router/Router";
 
 const route = router.examples["3"].b;
 
