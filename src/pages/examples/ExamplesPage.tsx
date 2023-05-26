@@ -7,6 +7,7 @@ import { Example02b } from "./Example02b";
 import { Example03a } from "./Example03a";
 import { Example03b } from "./Example03b";
 import { Example03c } from "./Example03c";
+import { OptimisticUpdatesPage } from "./OptimisticUpdates";
 
 const goHome = () => router.home.push();
 
@@ -20,5 +21,6 @@ export const ExamplesPage = () => (
     <Example03a />
     <Example03b />
     <Example03c />
+    <OptimisticUpdatesPage />
   </Route>
 );

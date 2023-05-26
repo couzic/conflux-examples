@@ -29,6 +29,9 @@ export const createRouter = (history: History) =>
             c: route({ path: "/c/:pokemon-name", params: ["pokemon-name"] }),
           },
         }),
+        optimisticUpdates: route({
+          path: "/optimistic-updates",
+        }),
       },
     }),
   });

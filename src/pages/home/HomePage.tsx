@@ -13,6 +13,7 @@ const goToExample03a = () => examples["3"].a.push();
 const goToExample03b = () => examples["3"].b.push();
 const goToExample03c = () =>
   examples["3"].c.push({ "pokemon-name": "charizard" });
+const goToOptimisticUpdates = () => examples.optimisticUpdates.push();
 
 export const HomePage = () => (
   <Route exact match={router.home}>
@@ -25,6 +26,7 @@ export const HomePage = () => (
       <button onClick={goToExample03a}>Example 3a</button>
       <button onClick={goToExample03b}>Example 3b</button>
       <button onClick={goToExample03c}>Example 3c</button>
+      <button onClick={goToOptimisticUpdates}>Optimistic Updates</button>
     </div>
   </Route>
 );
