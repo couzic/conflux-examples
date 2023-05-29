@@ -73,19 +73,9 @@ export const Example01b = () => (
 const Description = () => (
   <ExampleDescription>
     <p>
-      Using epics as inspired by{" "}
-      <a
-        target="__blank"
-        href="https://redux-observable.js.org/docs/basics/Epics.html"
-      >
-        redux-observables
-      </a>
-      , we debounce input value change events and store the value in the
-      "searchedPokemonName" field.
-    </p>
-    <p>
-      Once this field is set, data for that named pokemon is fetched, and a
-      loader is displayed in the meantime.
+      When input value changes, the value is stored in a field. We then treat
+      changes of this field's value as a stream, debouncing and mapping to a
+      stream of API results.
     </p>
     <ExampleLink filename="Example01b.tsx" />
   </ExampleDescription>
