@@ -1,5 +1,5 @@
 import { createStore } from "lenrix";
-import { debounceTime, filter, map, of, pipe } from "rxjs";
+import { debounceTime, filter, map, of, pipe, switchMap } from "rxjs";
 import { Route } from "../../common/Route";
 import { loadableComponent } from "../../common/loadableComponent";
 import { ExampleDescription } from "./ExampleDescription";
@@ -13,37 +13,39 @@ const route = router.examples["1"].b;
 const pokemonService = createPokemonService();
 
 interface State {
-  searchedPokemonName?: string;
+  searchedPokemonName: string;
 }
 
-const store = createStore({} as State)
-  .actionTypes<{ inputValueChanged: string; setSearchedPokemonName: string }>()
-  .pureEpics({
-    inputValueChanged: pipe(
-      map((inputValue) => inputValue.trim().toLowerCase()),
-      filter((inputValue) => inputValue.length > 0),
-      debounceTime(500),
-      map((inputValue) => ({ setSearchedPokemonName: inputValue }))
-    ),
-  })
+const store = createStore({ searchedPokemonName: "" } as State)
+  .actionTypes<{ inputValueChanged: string }>()
   .updates({
-    setSearchedPokemonName: (searchedPokemonName) => (state) => ({
+    inputValueChanged: (value) => (state) => ({
       ...state,
-      searchedPokemonName,
+      searchedPokemonName: value,
     }),
   })
-  .loadFromFields(["searchedPokemonName"], {
-    pokemon: ({ searchedPokemonName }) =>
-      searchedPokemonName === undefined
-        ? of(null)
-        : pokemonService.findByName(searchedPokemonName),
+  .loadFromFields$(["searchedPokemonName"], {
+    pokemon: pipe(
+      map((_) => _.searchedPokemonName),
+      map((_) => _.trim().toLowerCase()),
+      debounceTime(500),
+      switchMap((_) =>
+        _.length === 0
+          ? of("empty input" as const)
+          : pokemonService.findByName(_)
+      )
+    ),
   });
 
 const onNameInputValueChange = (e: any) =>
   store.dispatch({ inputValueChanged: e.target.value });
 
 const Pokemon = loadableComponent(store.pick("pokemon"), ({ pokemon }) =>
-  !pokemon ? null : <PokemonDisplay pokemon={pokemon} />
+  pokemon === "empty input" ? null : pokemon === null ? (
+    <h4>Pokemon not found</h4>
+  ) : (
+    <PokemonDisplay pokemon={pokemon} />
+  )
 );
 
 export const Example01b = () => (
