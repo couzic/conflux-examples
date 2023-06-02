@@ -8,6 +8,7 @@ import { Example03a } from "./Example03a";
 import { Example03b } from "./Example03b";
 import { Example03c } from "./Example03c";
 import { OptimisticUpdatesPage } from "./OptimisticUpdates";
+import { NestedRoutesPage } from "./NestedRoutes";
 
 const goHome = () => router.home.push();
 
@@ -22,5 +23,6 @@ export const ExamplesPage = () => (
     <Example03b />
     <Example03c />
     <OptimisticUpdatesPage />
+    <NestedRoutesPage />
   </Route>
 );

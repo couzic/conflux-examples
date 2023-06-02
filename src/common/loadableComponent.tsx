@@ -25,7 +25,11 @@ export function loadableComponent<Props>(
     if (state === null) return null;
     if (state.status === "loading") return <Spinner />;
     if (state.status === "error")
-      return <h1>Errors ! {JSON.stringify(state.errors)}</h1>;
+      return (
+        <h3>
+          Errors: {JSON.stringify(state.errors.map((error) => error.message))}
+        </h3>
+      );
     return <Component {...(state.data as any)} />;
   };
 }

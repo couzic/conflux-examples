@@ -32,6 +32,25 @@ export const createRouter = (history: History) =>
         optimisticUpdates: route({
           path: "/optimistic-updates",
         }),
+        nestedRoutes: route({
+          path: "/nested-routes",
+          nested: {
+            app: route({
+              path: "/app",
+              nested: {
+                services: route({
+                  path: "/services",
+                  nested: {
+                    detail: route({
+                      path: "/:serviceId",
+                      params: ["serviceId"],
+                    }),
+                  },
+                }),
+              },
+            }),
+          },
+        }),
       },
     }),
   });
