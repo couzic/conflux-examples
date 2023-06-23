@@ -63,12 +63,14 @@ const PokemonSelection = loadableComponent(
   store.pick("pokemonOptions", "selectedPokemonOption"),
   ({ pokemonOptions, selectedPokemonOption }) => (
     <div style={{ width: 300 }}>
-      <Select
-        placeholder="Select a pokemon"
-        options={pokemonOptions}
-        value={selectedPokemonOption}
-        onChange={onPokemonSelected}
-      />
+      <div style={{ color: "#333" }}>
+        <Select
+          placeholder="Select a pokemon"
+          options={pokemonOptions}
+          value={selectedPokemonOption}
+          onChange={onPokemonSelected}
+        />
+      </div>
       <Pokemon />
     </div>
   )
