@@ -116,6 +116,7 @@ const Comments = loadableComponent(
             key={comment.text}
             style={{
               backgroundColor: "#f0f0f0",
+              color: "#333",
               padding: "10px",
               marginBottom: "10px",
               borderRadius: "5px",

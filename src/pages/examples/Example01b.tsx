@@ -62,7 +62,6 @@ export const Example01b = () => (
         borderRadius: "4px",
         fontFamily: "Arial, sans-serif",
         fontSize: "16px",
-        color: "#333",
       }}
       placeholder="Enter pokemon name"
     />
